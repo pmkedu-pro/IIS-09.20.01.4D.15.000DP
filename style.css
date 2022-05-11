@@ -1,0 +1,65 @@
+@font-face { font-family: sch24perm_font; src: url(Bahnschrift.ttf);}
+
+
+html,body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: sch24perm_Font, sans-serif;
+}
+
+body {
+	color: white;
+	font-size: 4rem;
+}
+
+.row::after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.row {
+	display: inline-block;
+}
+
+* html .row {
+	height: 1%;
+}
+
+.row {
+	display: block;
+}
+
+.inner-header {
+	background: #50ce30;
+	height: 20vh;
+}
+
+.content1 {
+	width: 50%;
+	float: left;
+}
+
+.inner-content1 {
+	background: #d017c1;
+	min-height: 60vh;
+}
+
+.content2 {
+	width: 50%;
+	float: left;
+}
+
+.inner-content2 {
+	background: #4e52d2;
+	min-height: 60vh;
+}
+
+.inner-footer {
+	background: #3097ce;
+	height: 20vh;
+}
