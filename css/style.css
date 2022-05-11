@@ -1,0 +1,39 @@
+body {
+    color: white;
+    font-size: 100px;
+}
+.row::after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
+.row { display: inline-block; }
+* html .row { height: 1%; }
+.row { display:block; }
+.inner-header {
+    background: #50ce30;
+    height: 330px;
+}
+.content1 {
+   width: 50%;
+   float: left;
+}
+.inner-content1 {
+    background: #d017c1;
+    min-height: 1400px;
+}
+.content2 {
+    width: 50%;
+    float: left;
+}
+.inner-content2 {
+    background: #4e52d2;
+    min-height: 1400px;
+}
+.inner-footer {
+    background: #3097ce;
+    height: 330px;
+}
