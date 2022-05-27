@@ -1,65 +1,62 @@
 //CONSTANTS
-let mediaDuration = 3; // Длительность показа медиа в секундах
-//
+const mediaDuration = 3;  // Длительность показа медиа в секундах
 
-function clock(){
-    
+//VARS
+let data = {};          //Данные получаемые от сервера
+let currentMedia = 0;   //Текущий показываемый медиа файл
+
+let interval_clock = setInterval(update_clock, 1000);
+let interval_data = setInterval(process_data, mediaDuration * 1000);
+
+/*
+Функция обновления текста в блоке с часами
+*/
+function update_clock(){
     months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
     daysOfWeek = ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресение"];
 
     var time = new Date();
     var thismonth = months[time.getMonth() + 1];
-    var date = time.getDate();
-    var thisyear = time.getYear();
     var day = time.getDay() + 1;
+    var dayOfWeek =  time.getDay();
 
-    //document.getElementById('clock__date').innerHTML = day + ' ' + thismonth + ', ' + daysOfWeek[time.getDate()];
-    //document.getElementById('clock__time').innerHTML = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+    document.getElementById('clock__date').innerHTML = day + ' ' + thismonth;
+    document.getElementById('clock__time').innerHTML = daysOfWeek[dayOfWeek] + ' ' + time.getHours() + ':' + time.getMinutes();
 }
 
-setInterval(clock, 30000);
-clock();
-
-var data = {};
-let currentMedia = 0;
-let timer = setInterval(processData, mediaDuration * 1000); //set to 60000 for 60 seconds
-
-function processData() {
+/*
+Функция обработки данных получаемых от сервера
+*/
+function process_data() {
 
     //Работа с медиа
     if (currentMedia < data['media'].length) {
         let media_str;
-        var currentElement = document.getElementById("media_block");
-        clearInterval(timer);
+        let mediaElement = document.getElementById("media_block");
+        clearInterval(interval_data);
 
-        if(data['media'][currentMedia].endsWith("jpg") || data['media'][currentMedia].endsWith("png") || data['media'][currentMedia].endsWith("gif")) {
+        if(data['media'][currentMedia].endsWith("jpg") || data['media'][currentMedia].endsWith("JPG") || data['media'][currentMedia].endsWith("png") || data['media'][currentMedia].endsWith("gif")) {
             media_str = '<img class="media" src="/media/' + data['media'][currentMedia] + '">';
-            currentElement.innerHTML = media_str;
-            
-            timer = setInterval(processData, mediaDuration * 1000);
+            interval_data = setInterval(process_data, mediaDuration * 1000);
         } else {
             media_str = '<video id="mvideo" class="media" width=500px src="/media/'+ data['media'][currentMedia] + '" autoplay muted>Видео не поддерживвается</video>';
-            currentElement.innerHTML = media_str;
-
             //var video = document.createElement('video');
             //video.preload = 'metadata';
             //video.onloadedmetadata = function () {
             //    window.URL.revokeObjectURL(video.src);
                 //alert("Duration : " + video.duration + " seconds");
-                timer = setInterval(processData, mediaDuration * 1000);
+                interval_data = setInterval(process_data, mediaDuration * 1000);
             //}
             //video.src = URL.createObjectURL('/media/' + data['media'][currentMedia]);0
         }
+        mediaElement.innerHTML = media_str;
         currentMedia += 1;
-
-
-
     } else {
         currentMedia = 0;
     }
 }
 
-function GetData() {
+function get_data() {
     //Создаем функцию обработчик
     var Handler = function(Request) {
         var obj = JSON.parse(Request.responseText);
@@ -67,15 +64,12 @@ function GetData() {
 
         console.log(obj);
     }
-
     //Отправляем запрос
     SendRequest('GET', '/server/', '', Handler);
 }
 
 setInterval(GetData, 30000);
 GetData()
-
-
 
 //Создает подходящий тип запроса AJAX, Если есть GECKO то XMLHttpRequest, если нет ActiveXObject
 function CreateRequest() {

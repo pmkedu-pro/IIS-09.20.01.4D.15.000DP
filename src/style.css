@@ -1,6 +1,5 @@
 @font-face { font-family: sch24perm_font; src: url(Bahnschrift.ttf);}
 
-
 html,body {
     margin: 0;
     padding: 0;
@@ -10,70 +9,36 @@ html,body {
 
 body {
 	color: rgb(0, 0, 0);
-	font-size: 2rem;
+	font-size: 1rem;
+	background-image: url('/src/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
-.row::after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
-}
-
-.row {
-	display: inline-block;
-}
-
-* html .row {
-	height: 1%;
-}
-
-.row {
-	display: flex;
-	
-}
-
-.inner-header {
-	font-size: 5rem;
-	color: white;
-	background: rgba(44, 44, 44);
+header {
 	height: 15vh;
+	display: flex;
+	justify-content: space-between;
 }
 
-.content1 {
-	width: 20vw;
-	background: white;
-	min-height: 60vh;
+main {
+	height: 76vh;
+	display: flex;
 }
 
-.inner-content1 {
-	
+footer {
+	height: 9vh;
+	color: white;
+	background: rgb(153, 0, 0);
+	font-size: 7.5vh;
 }
 
-.content2 {
-	width: 60vw;
-	background: #4e52d2;
-	min-height: 60vh;
-}
-
-.inner-content2 {
-	
-}
-
-.content3 {
-	width: 20vw;
-	background: white;
-	min-height: 60vh;
-}
-
-.inner-content3 {
-
-}
+.brand
 
 .inner-footer1 {
-	background: rgb(44, 44, 44);
 	height: 5vh;
 }
 
@@ -81,10 +46,45 @@ body {
 	color: white;
 	background: rgb(153, 0, 0);
 	height: 10vh;
-	font-size: 8rem;
+	font-size: 2rem;
 }
-.media {
-	width: 100%;
+
+.content3 {
+	width: auto;
 	height: 100%;
-	aspect-ratio: 16 / 9;
 }
+
+.media {
+	width: 100vh;
+	border-radius: 3vh; 
+}
+
+.media_block {
+	width: 60vw;
+	min-height: 60vh;
+	padding: 40px;
+}
+
+.logo {
+	width: 100%;
+}
+
+
+/* CLOCK START */
+
+.clock {
+	width: 30vw;
+	text-align: center;
+	font-size: 6vh;
+	color: black;
+}
+
+.clock__date {
+
+}
+
+.clock__time {
+
+}
+
+/* CLOCK END */

@@ -7,61 +7,45 @@
     <script src="/src/script.js"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">
-            <div class="inner-header">
-                <img src="/src/logo.png" align="left">Муниципальное автономное общеобразовательное учреждение
-                <br>«Средняя общеобразовательная школа № 24» г.Перми
-            </div>
+<header>
+    <div class="brand">
+        <!-- <img src="/src/logo.png" align="left"> -->
+        <span>Муниципальное автономное общеобразовательное учреждение</span><br>
+        <!-- <span>«Средняя общеобразовательная школа № 24» г.Перми</span> -->
+    </div>
+    <div class="clock">
+        <span id="clock__date"></span><br>
+        <span id="clock__time"></span>
+    </div>
+</header>
+<main>
+    <div class="inner-content1 media_block" id="media_block"></div>
+    <div class="content3">
+        <div class="inner-content3">
+            <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="sch24perm/114" data-width="100%">
+            </script>
         </div>
-        <div class="row">
-            <div class="content1">
-                <div class="inner-content1">МЫ В VK</div>
-                    <img src="/src/QR_VK.png" >
-                <div class="inner-content1">TG POST</div>
-                    <script async src="https://telegram.org/js/telegram-widget.js?19" 
-                        data-telegram-post="sch24perm/114" 
-                        data-width="100%">
-                    </script>
-            </div>
-            <div class="content2"> 
-                <div class="inner-content2">ИНФА</div>
-                <div class="inner-content1" id="media_block"></div>
-                <div class="inner-content1">СРОЧНЫЕ НОВОСТИ</div>
-            </div>
-            <div class="content3">
-                <div class="inner-content3">МЫ В TG</div>
-                    <img src="/src/QR_VK.png">ПОГОДА
-                <div class="inner-content1">
-                    <a class="nuipogoda-iframe-informer" data-nuipogoda="informer2" href="https://perm.nuipogoda.ru" style="width:284px;height:326px;display:block;box-shadow: 0 0 5px #999;">погодный информер</a>
-                    <script>
-                        (function(a, f, g) {
-                            var e = a.createElement(f);
-                            e.async = 1;
-                            e.src = g;
-                            a = a.getElementsByTagName(f)[0];
-                            a.parentNode.insertBefore(e, a)
-                        })(document, 'script', '//nuipogoda.ru/informer/nuipogoda.js');
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="inner-footer1">
-                <div id="clock">
-                    <span id="clock__date"></span>
-                    <span id="clock__time"></span>
-                </div>
-            </div>
-            <div class="inner-footer2">
-                <marquee scrollamount="20"; scrolldelay="0">
-                    Внимание! В связи с пандемией COVID-19, убедительная просьба соблюдать профилактические меры - масочный режим и дистанцию не менее 1 метра)!!!
-                </marquee>
-            </div>
-                </div>
-            </div>
+            <!-- <img class="qr" src="/src/QR_VK.png"> -->
+        <div class="inner-content1">
+            <a class="nuipogoda-iframe-informer" data-nuipogoda="informer2" href="https://perm.nuipogoda.ru" style="width:284px;height:326px;display:block;box-shadow: 0 0 5px #999;">погодный информер</a>
+            <script>
+                (function(a, f, g) {
+                    var e = a.createElement(f);
+                    e.async = 1;
+                    e.src = g;
+                    a = a.getElementsByTagName(f)[0];
+                    a.parentNode.insertBefore(e, a)
+                })(document, 'script', '//nuipogoda.ru/informer/nuipogoda.js');
+            </script>
         </div>
     </div>
+</main>
+<footer>
 
+    <marquee scrollamount="20"; scrolldelay="0">
+        Внимание! В связи с пандемией COVID-19, убедильная просьба соблюдать профилактические меры - масочный режим и дистанцию не менее 1 метра)!!!
+    </marquee>
+    </div>
+</footer>
 </body>
 </html>
