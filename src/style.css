@@ -1,90 +1,95 @@
-@font-face { font-family: sch24perm_font; src: url(Bahnschrift.ttf);}
+@font-face {
+    font-family: sch24perm_font;
+    src: url(Bahnschrift.ttf);
+}
 
-html,body {
+html, body {
     margin: 0;
     padding: 0;
-    color: rgb(255, 255, 255);
     font-family: sch24perm_font, sans-serif;
 }
 
 body {
-	color: rgb(0, 0, 0);
-	font-size: 1rem;
-	background-image: url('/src/bg.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 100%;
+    color: white;
+    font-size: 1rem;
+    background-image: url('/src/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
 
 header {
-	height: 15vh;
-	display: flex;
-	justify-content: space-between;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
 }
 
 main {
-	height: 76vh;
-	display: flex;
+    height: 76vh;
+    display: flex;
 }
 
 footer {
-	height: 9vh;
-	color: white;
-	background: rgb(153, 0, 0);
-	font-size: 7.5vh;
-}
-
-.brand
-
-.inner-footer1 {
-	height: 5vh;
-}
-
-.inner-footer2 {
-	color: white;
-	background: rgb(153, 0, 0);
-	height: 10vh;
-	font-size: 2rem;
+    height: 9vh;
+    background: rgb(153, 0, 0);
+    font-size: 7.5vh;
 }
 
 .content3 {
-	width: auto;
-	height: 100%;
+    width: auto;
+    height: 100%;
 }
 
 .media {
-	width: 100vh;
-	border-radius: 3vh; 
+    width: 100vh;
+    border-radius: 3vh;
 }
 
 .media_block {
-	width: 60vw;
-	min-height: 60vh;
-	padding: 40px;
+    width: 60vw;
+    min-height: 60vh;
+    padding: 5vh;
 }
 
-.logo {
-	width: 100%;
+/* BRAND START */
+.brand {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    color: inherit;
+    line-height: 1;
+    text-decoration: none;
+    column-gap: 1vh;
+    height: 100%;
+    margin: 0 1vw;
+    flex-grow: 1;
+    font-size: 3.3vh;
 }
 
+.brand__logo {
+    width: 14vh;
+    margin: 1vh;
+    grid-row: span 2;
+}
+
+.brand__title {
+    margin: 0;
+    align-self: flex-end;
+}
+
+.brand__tagline {
+    margin: 0;
+    font-weight: bold;
+    align-self: flex-start;
+}
+/* BRAND END */
 
 /* CLOCK START */
-
 .clock {
-	width: 30vw;
-	text-align: center;
-	font-size: 6vh;
-	color: black;
+    width: 30vw;
+    text-align: center;
+    font-size: 6vh;
+    color: black;
 }
-
-.clock__date {
-
-}
-
-.clock__time {
-
-}
-
 /* CLOCK END */
