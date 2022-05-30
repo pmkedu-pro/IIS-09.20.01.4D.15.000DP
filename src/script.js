@@ -96,7 +96,7 @@ function get_weather() {
 
         let element_wether = document.getElementById('weather__temp');
         let element_wether_icon = document.getElementById('weather__icon');
-        element_wether.innerHTML = data['weather']['main'].temp + '&#8451;';
+        element_wether.innerHTML = Math.round (data['weather']['main'].temp) + '&#8451;';
         element_wether_icon.setAttribute('src', '/src/weather_icons/' + data['weather']['weather'][0].icon + '.svg');
 
         console.log(obj);
