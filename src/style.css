@@ -37,18 +37,20 @@ footer {
     font-size: 7.5vh;
 }
 
+/* MEDIA START */
+.media_block {
+    width: 52vw;
+    padding: 5vh 15vh;
 }
 
 .media {
-    width: 100vh;
-    border-radius: 3vh;
+    width: 55vw;
+    height: 66vh;
+    border-radius: 2vh;
+    object-fit: contain;
 }
 
-.media_block {
-    width: 60vw;
-    min-height: 60vh;
-    padding: 5vh;
-}
+/* MEDIA END */
 
 /* BRAND START */
 .brand {
@@ -79,6 +81,7 @@ footer {
     font-weight: bold;
     align-self: flex-start;
 }
+
 /* BRAND END */
 
 /* CLOCK START */
