@@ -6,18 +6,18 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: sch24perm_font, sans-serif;
 }
 
 body {
-    color: white;
-    font-size: 1rem;
-    background-image: url('/src/bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background-image: url('/src/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-family: sch24perm_font, sans-serif;
+    font-size: 1rem;
 }
 
 header {
@@ -37,9 +37,6 @@ footer {
     font-size: 7.5vh;
 }
 
-.content3 {
-    width: auto;
-    height: 100%;
 }
 
 .media {
@@ -61,15 +58,14 @@ footer {
     line-height: 1;
     text-decoration: none;
     column-gap: 1vh;
-    height: 100%;
-    margin: 0 1vw;
+    height: inherit;
     flex-grow: 1;
     font-size: 3.3vh;
+    padding: 1vh
 }
 
 .brand__logo {
-    width: 14vh;
-    margin: 1vh;
+    height: inherit;
     grid-row: span 2;
 }
 
@@ -87,9 +83,37 @@ footer {
 
 /* CLOCK START */
 .clock {
-    width: 30vw;
+    width: 29vw;
+    padding: 0 1vw;
+    white-space: nowrap;
     text-align: center;
     font-size: 6vh;
     color: black;
 }
+
 /* CLOCK END */
+
+/* WEATHER START */
+#weather {
+    display: flex;
+    flex-direction: column;
+    width: 11vw;
+    padding: 0 1vw;
+    text-align: center;
+    font-size: 6vh;
+    color: black;
+    align-items: center;
+}
+
+#weather__icon {
+    width: 11vh;
+    margin: -1vh -2vh -2vh;
+}
+
+/* WEATHER END */
+
+.telegram_block {
+    width: auto;
+    padding-top: 5vh;
+    height: 100%;
+}

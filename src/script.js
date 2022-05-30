@@ -1,12 +1,27 @@
-//CONSTANTS
+/* КОНСТАНТЫ START */
+//media
 const mediaDuration = 3;  // Длительность показа медиа в секундах
+//weather
+const weather_Api = '3e6dfeac0ade2be0bb772ec3b93b445f';
+const weather_lat = '58.1113';
+const weather_lon = '56.2858';
+/* КОНСТАНТЫ END */
 
-//VARS
+//ПЕРЕМЕННЫЕ
 let data = {};          //Данные получаемые от сервера
-let currentMedia = 0;   //Текущий показываемый медиа файл
+let currentMedia = 0;   //Номер текущего показываемого медиа-файла
 
-let interval_clock = setInterval(update_clock, 1000);
-let interval_data = setInterval(process_data, mediaDuration * 1000);
+let interval_server = setInterval(get_data, 30000);                     //Запрос данных с сервера каждые 30 секунд
+let interval_data = setInterval(update_media, mediaDuration * 1000);    //Обновление медиа каждые mediaDuration секунд
+let interval_weather = setInterval(get_weather, 120000);                //Запрос данных с сервера погоды каждые 2 минуты
+let interval_clock = setInterval(update_clock, 30000);                  //Обновление часов каждые 30 секунд
+
+//Первичный запуск функций после плной прогрузки страницы
+document.addEventListener("DOMContentLoaded", function () {
+    update_clock();
+    get_data();
+    get_weather();
+});
 
 /*
 Функция обновления текста в блоке с часами
@@ -20,13 +35,13 @@ function update_clock() {
     let dayOfWeek = time.getDay();
 
     document.getElementById('clock__date').innerHTML = day + ' ' + thisMonth;
-    document.getElementById('clock__time').innerHTML = daysOfWeek[dayOfWeek] + ' ' + time.getHours() + ':' + time.getMinutes();
+    document.getElementById('clock__time').innerHTML = daysOfWeek[dayOfWeek] + ' ' + time.getHours() + ':' + (time.getMinutes() < 10 ? '0' : '') + time.getMinutes();
 }
 
 /*
-Функция обработки данных получаемых от сервера
+Функция обработки ресурсов в блоке медиа
 */
-function process_data() {
+function update_media() {
 
     //Работа с медиа
     if (currentMedia < data['media'].length) {
@@ -36,7 +51,7 @@ function process_data() {
 
         if (data['media'][currentMedia].endsWith("jpg") || data['media'][currentMedia].endsWith("JPG") || data['media'][currentMedia].endsWith("png") || data['media'][currentMedia].endsWith("gif")) {
             media_str = '<img alt="media" class="media" src="/media/' + data['media'][currentMedia] + '">';
-            interval_data = setInterval(process_data, mediaDuration * 1000);
+            interval_data = setInterval(update_media, mediaDuration * 1000);
         } else {
             media_str = '<video id="mvideo" class="media" width=500px src="/media/' + data['media'][currentMedia] + '" autoplay muted>Видео не поддерживвается</video>';
             //var video = document.createElement('video');
@@ -44,7 +59,7 @@ function process_data() {
             //video.onloadedmetadata = function () {
             //    window.URL.revokeObjectURL(video.src);
             //alert("Duration : " + video.duration + " seconds");
-            interval_data = setInterval(process_data, mediaDuration * 1000);
+            interval_data = setInterval(update_media, mediaDuration * 1000);
             //}
             //video.src = URL.createObjectURL('/media/' + data['media'][currentMedia]);0
         }
@@ -55,20 +70,45 @@ function process_data() {
     }
 }
 
+/*
+Функция получения данных от сервера
+*/
 function get_data() {
     //Создаем функцию обработчик
-    var Handler = function (Request) {
-        var obj = JSON.parse(Request.responseText);
-        data = obj;
+    let Handler = function (Request) {
+        let obj = JSON.parse(Request.responseText);
+        data['media'] = obj['media'];
 
         console.log(obj);
-    }
+    };
     //Отправляем запрос
     SendRequest('GET', '/server/', '', Handler);
 }
 
-setInterval(get_data, 30000);
-get_data()
+/*
+Функция получения данных о погоде от API погоды
+*/
+function get_weather() {
+    //Создаем функцию обработчик
+    let Handler = function (Request) {
+        let obj = JSON.parse(Request.responseText);
+        data['weather'] = obj;
+
+        let element_wether = document.getElementById('weather__temp');
+        let element_wether_icon = document.getElementById('weather__icon');
+        element_wether.innerHTML = data['weather']['main'].temp + '&#8451;';
+        element_wether_icon.setAttribute('src', '/src/weather_icons/' + data['weather']['weather'][0].icon + '.svg');
+
+        console.log(obj);
+    };
+    //Отправляем запрос
+    SendRequest('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + weather_lat + '&lon=' + weather_lon + '&appid=' + weather_Api + '&units=metric', '', Handler);
+}
+
+
+/*
+Вспомогательные функции для AJAX запросов
+*/
 
 //Создает подходящий тип запроса AJAX, Если есть GECKO то XMLHttpRequest, если нет ActiveXObject
 function CreateRequest() {
@@ -135,7 +175,3 @@ function SendRequest(r_method, r_path, r_args, r_handler) {
         Request.send(null);
     }
 } 
-
-
-
-

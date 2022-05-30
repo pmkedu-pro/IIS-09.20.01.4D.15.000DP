@@ -10,37 +10,30 @@
 <header>
     <div class="brand">
         <img class="brand__logo" src="/src/logo.svg">
-        <p class="brand__title">Муниципальное автономное общеобразовательное учреждение</p>
+        <p class="brand__title">Муниципальное автономное<br>общеобразовательное учреждение</p>
         <p class="brand__tagline">«Средняя общеобразовательная школа № 24» г.Перми</p>
     </div>
     <div class="clock">
         <span id="clock__date"></span><br>
         <span id="clock__time"></span>
+
+    </div>
+    <div id="weather">
+        <img id="weather__icon">
+        <span id="weather__temp"></span>
     </div>
 </header>
 <main>
-    <div class="inner-content1 media_block" id="media_block"></div>
-    <div class="content3">
-            <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="sch24perm/114" data-width="100%">
-            </script>
-            <!-- <img class="qr" src="/src/QR_VK.png"> -->
-        <div class="inner-content1">
-            <a class="nuipogoda-iframe-informer" data-nuipogoda="informer2" href="https://perm.nuipogoda.ru" style="width:284px;height:326px;display:block;box-shadow: 0 0 5px #999;">погодный информер</a>
-            <script>
-                (function(a, f, g) {
-                    var e = a.createElement(f);
-                    e.async = 1;
-                    e.src = g;
-                    a = a.getElementsByTagName(f)[0];
-                    a.parentNode.insertBefore(e, a)
-                })(document, 'script', '//nuipogoda.ru/informer/nuipogoda.js');
-            </script>
-        </div>
-    </div>
+    <div class="media_block" id="media_block"></div>
+<!--    <div class="telegram_block">-->
+<!--        <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-post="sch24perm/114"-->
+<!--                data-width="100%"></script>-->
+<!--    </div>-->
 </main>
 <footer>
-    <marquee scrollamount="20"; scrolldelay="0">
-        Внимание! В связи с пандемией COVID-19, убедильная просьба соблюдать профилактические меры - масочный режим и дистанцию не менее 1 метра)!!!
+    <marquee scrollamount="20" ; scrolldelay="0">
+        Внимание! В связи с пандемией COVID-19, убедильная просьба соблюдать профилактические меры - масочный режим и
+        дистанцию не менее 1,5 метра)!
     </marquee>
 </footer>
 </body>
