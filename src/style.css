@@ -44,8 +44,8 @@ footer {
 }
 
 .media {
-    width: 55vw;
-    height: 66vh;
+    width: 85vw;
+    height: 69vh;
     border-radius: 2vh;
     object-fit: contain;
 }
@@ -86,7 +86,7 @@ footer {
 
 /* CLOCK START */
 .clock {
-    width: 29vw;
+    width: 14vw;
     padding: 0 1vw;
     white-space: nowrap;
     text-align: center;
@@ -110,7 +110,7 @@ footer {
 
 #weather__icon {
     width: 11vh;
-    margin: -1vh -2vh -2vh;
+    margin: 18vh -2vh -2vh;
 }
 
 /* WEATHER END */
