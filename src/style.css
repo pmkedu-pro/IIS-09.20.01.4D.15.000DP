@@ -12,7 +12,7 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('/src/bg.jpg');
+    background-image: url('/src/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
