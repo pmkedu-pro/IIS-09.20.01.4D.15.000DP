@@ -1,10 +1,7 @@
 /* КОНСТАНТЫ START */
 //media
 const mediaDuration = 3;  // Длительность показа медиа в секундах
-//weather
-const weather_Api = '3e6dfeac0ade2be0bb772ec3b93b445f';
-const weather_lat = '58.1113';
-const weather_lon = '56.2858';
+
 /* КОНСТАНТЫ END */
 
 //ПЕРЕМЕННЫЕ
@@ -13,30 +10,12 @@ let currentMedia = 0;   //Номер текущего показываемого
 
 let interval_server = setInterval(get_data, 30000);                     //Запрос данных с сервера каждые 30 секунд
 let interval_data = setInterval(update_media, mediaDuration * 1000);    //Обновление медиа каждые mediaDuration секунд
-let interval_weather = setInterval(get_weather, 120000);                //Запрос данных с сервера погоды каждые 2 минуты
-let interval_clock = setInterval(update_clock, 30000);                  //Обновление часов каждые 30 секунд
 
 //Первичный запуск функций после плной прогрузки страницы
 document.addEventListener("DOMContentLoaded", function () {
-    update_clock();
     get_data();
-    get_weather();
 });
 
-/*
-Функция обновления текста в блоке с часами
-*/
-function update_clock() {
-    let months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-    let daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-    let time = new Date();
-    let thisMonth = months[time.getMonth()];
-    let day = time.getDate();
-    let dayOfWeek = time.getDay();
-
-    document.getElementById('clock__date').innerHTML = day + ' ' + thisMonth;
-    document.getElementById('clock__time').innerHTML = daysOfWeek[dayOfWeek] + ' ' + time.getHours() + ':' + (time.getMinutes() < 10 ? '0' : '') + time.getMinutes();
-}
 
 /*
 Функция обработки ресурсов в блоке медиа
@@ -77,34 +56,21 @@ function get_data() {
     //Создаем функцию обработчик
     let Handler = function (Request) {
         let obj = JSON.parse(Request.responseText);
-        data['media'] = obj['media'];
+        data = obj;
+
+        let element_wether = document.getElementById('weather__temp');
+        let element_wether_icon = document.getElementById('weather__icon');
+        element_wether.innerHTML = data['weather']['temp'] + '&#8451;';
+        element_wether_icon.setAttribute('src', '/src/weather_icons/' + data['weather']['code'] + '.svg');
+
+        document.getElementById('clock__date').innerHTML = data['time'][0];
+        document.getElementById('clock__time').innerHTML = data['time'][1];
 
         console.log(obj);
     };
     //Отправляем запрос
     SendRequest('GET', '/server/', '', Handler);
 }
-
-/*
-Функция получения данных о погоде от API погоды
-*/
-function get_weather() {
-    //Создаем функцию обработчик
-    let Handler = function (Request) {
-        let obj = JSON.parse(Request.responseText);
-        data['weather'] = obj;
-
-        let element_wether = document.getElementById('weather__temp');
-        let element_wether_icon = document.getElementById('weather__icon');
-        element_wether.innerHTML = Math.round (data['weather']['main'].temp) + '&#8451;';
-        element_wether_icon.setAttribute('src', '/src/weather_icons/' + data['weather']['weather'][0].icon + '.svg');
-
-        console.log(obj);
-    };
-    //Отправляем запрос
-    SendRequest('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' + weather_lat + '&lon=' + weather_lon + '&appid=' + weather_Api + '&units=metric', '', Handler);
-}
-
 
 /*
 Вспомогательные функции для AJAX запросов
