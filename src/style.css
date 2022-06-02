@@ -44,7 +44,7 @@ footer {
 }
 
 .media {
-    width: 85vw;
+    width: 50vw;
     height: 69vh;
     border-radius: 2vh;
     object-fit: contain;
@@ -114,9 +114,3 @@ footer {
 }
 
 /* WEATHER END */
-
-.telegram_block {
-    width: auto;
-    padding-top: 5vh;
-    height: 100%;
-}
