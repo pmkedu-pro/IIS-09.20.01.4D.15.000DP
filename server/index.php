@@ -17,14 +17,18 @@ if (!isset($_SESSION['lastTime'])) {
 } else {
     $nowTime = new DateTime("now");
     $secondsElapsed = $_SESSION['lastTime']->diff($nowTime)->s;
-    if ($secondsElapsed >= 90) {
+    $data['secondsElapsed'] = $secondsElapsed;
+    if ($secondsElapsed >= 20) {
         get_Temp();
         $_SESSION['lastTime'] = new DateTime("now");
     }
 }
 
-$date1 = date('F j');
-$date2 = date('l H:i');
+$data["weather"]["temp"] = $_SESSION['temp'];
+$data["weather"]["code"] = $_SESSION['code'];
+
+$date1 = date('j F');
+$date2 = date('l');
 
 $ru_weekdays = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
 $en_weekdays = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
@@ -51,9 +55,6 @@ function get_Temp()
 
     $_SESSION['temp'] = round($weather["main"]["temp"]);
     $_SESSION['code'] = $weather["weather"][0]["icon"];
-
-    $data["weather"]["temp"] = $_SESSION['temp'];
-    $data["weather"]["code"] = $_SESSION['code'];
 
     curl_close($ch);
 }
