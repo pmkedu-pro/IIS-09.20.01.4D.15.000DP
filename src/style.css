@@ -86,12 +86,22 @@ footer {
 
 /* CLOCK START */
 .clock {
-    width: 14vw;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 1vh;
+    width: 24vw;
     padding: 0 1vw;
     white-space: nowrap;
-    text-align: center;
+    text-align: right;
     font-size: 6vh;
     color: black;
+}
+
+#clock__time {
+    font-size: 12vh;
+    grid-row: span 2;
+    font-weight: bold;
+    color: red;
 }
 
 /* CLOCK END */
@@ -110,7 +120,7 @@ footer {
 
 #weather__icon {
     width: 11vh;
-    margin: 18vh -2vh -2vh;
+    margin: 15vh -2vh -2vh;
 }
 
 /* WEATHER END */

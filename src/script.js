@@ -64,7 +64,8 @@ function get_data() {
         element_wether_icon.setAttribute('src', '/src/weather_icons/' + data['weather']['code'] + '.svg');
 
         document.getElementById('clock__date').innerHTML = data['time'][0];
-        document.getElementById('clock__time').innerHTML = data['time'][1];
+        document.getElementById('clock__week').innerHTML = data['time'][1];
+        document.getElementById('clock__time').innerHTML = data['time'][2];
 
         console.log(obj);
     };

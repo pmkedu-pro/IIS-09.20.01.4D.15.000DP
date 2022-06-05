@@ -32,7 +32,7 @@ $date2 = date('l');
 
 $ru_weekdays = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
 $en_weekdays = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-$ru_months = array('Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь');
+$ru_months = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
 $en_months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 
 $en_date1 = str_replace($en_months, $ru_months, $date1);
@@ -40,6 +40,7 @@ $en_date2 = str_replace($en_weekdays, $ru_weekdays, $date2);
 
 $data["time"][0] = $en_date1;
 $data["time"][1] = $en_date2;
+$data["time"][2] = date('H:i');
 
 $json = json_encode($data);
 print_r($json);
