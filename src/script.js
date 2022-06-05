@@ -33,14 +33,14 @@ function update_media() {
             interval_data = setInterval(update_media, mediaDuration * 1000);
         } else {
             media_str = '<video id="mvideo" class="media" width=500px src="/media/' + data['media'][currentMedia] + '" autoplay muted>Видео не поддерживвается</video>';
-            //var video = document.createElement('video');
-            //video.preload = 'metadata';
-            //video.onloadedmetadata = function () {
-            //    window.URL.revokeObjectURL(video.src);
-            //alert("Duration : " + video.duration + " seconds");
-            interval_data = setInterval(update_media, mediaDuration * 1000);
-            //}
-            //video.src = URL.createObjectURL('/media/' + data['media'][currentMedia]);0
+            let video = document.createElement('video');
+            video.preload = 'metadata';
+            video.onloadedmetadata = function () {
+                window.URL.revokeObjectURL(video.src);
+                //alert("Duration : " + video.duration + " seconds");
+                interval_data = setInterval(update_media, video.duration * 1000);
+            }
+            video.src = '/media/' + data['media'][currentMedia];
         }
         mediaElement.innerHTML = media_str;
         currentMedia += 1;
@@ -66,8 +66,6 @@ function get_data() {
         document.getElementById('clock__date').innerHTML = data['time'][0];
         document.getElementById('clock__week').innerHTML = data['time'][1];
         document.getElementById('clock__time').innerHTML = data['time'][2];
-
-        console.log(obj);
     };
     //Отправляем запрос
     SendRequest('GET', '/server/', '', Handler);
