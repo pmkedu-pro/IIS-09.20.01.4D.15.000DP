@@ -1,7 +1,6 @@
 /* КОНСТАНТЫ START */
 //media
 const mediaDuration = 3;  // Длительность показа медиа в секундах
-
 /* КОНСТАНТЫ END */
 
 //ПЕРЕМЕННЫЕ
@@ -16,10 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     get_data();
 });
 
-
-/*
-Функция обработки ресурсов в блоке медиа
-*/
+/* Функция обработки ресурсов в блоке медиа */
 function update_media() {
 
     //Работа с медиа
@@ -49,9 +45,7 @@ function update_media() {
     }
 }
 
-/*
-Функция получения данных от сервера
-*/
+/* Функция получения данных от сервера */
 function get_data() {
     //Создаем функцию обработчик
     let Handler = function (Request) {
@@ -71,9 +65,7 @@ function get_data() {
     SendRequest('GET', '/server/', '', Handler);
 }
 
-/*
-Вспомогательные функции для AJAX запросов
-*/
+/* Вспомогательные функции для AJAX запросов */
 
 //Создает подходящий тип запроса AJAX, Если есть GECKO то XMLHttpRequest, если нет ActiveXObject
 function CreateRequest() {

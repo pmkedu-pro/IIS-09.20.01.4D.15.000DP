@@ -2,7 +2,7 @@
     font-family: sch24perm_font;
     src: url(Bahnschrift.ttf);
 }
-
+/* SEMANTIC ELEMENTS START */
 html, body {
     margin: 0;
     padding: 0;
@@ -37,6 +37,8 @@ footer {
     background: rgb(153, 0, 0);
     font-size: 7.5vh;
 }
+
+/* SEMANTIC ELEMENTS END */
 
 /* MEDIA START */
 .media_block {

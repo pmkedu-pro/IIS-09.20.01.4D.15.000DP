@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Указание типа текущего докмента -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>МАОУ СОШ 24</title>
-    <link rel="stylesheet" href="/src/style.css">
-    <script src="/src/script.js"></script>
+    <meta charset="UTF-8"> <!-- Задание кодировки страницы -->
+    <title>МАОУ СОШ 24</title> <!-- Название вкладки страницы -->
+    <link rel="stylesheet" href="/src/style.css"> <!-- Привязка к внешнему файлу стилизации -->
+    <script src="/src/script.js"></script> <!-- Подключение исполняемого JavaScript кода -->
 </head>
 <body>
-<header>
-    <div class="brand">
+<header> <!-- Раздел сайта (верхний колонтитул) -->
+    <div class="brand"> <!-- logo+name -->
         <img class="brand__logo" src="/src/logo.svg">
         <div style="align-self: center;">
         <p class="brand__title">Муниципальное автономное<br>общеобразовательное учреждение</p>
@@ -20,19 +20,17 @@
         <span id="clock__week"></span>
         </div>
         <span id="clock__time"></span>
-
-
     </div>
     <div id="weather">
         <img id="weather__icon">
         <span id="weather__temp"></span>
     </div>
 </header>
-<main>
+<main> <!-- Раздел сайта (основной контент) -->
     <div class="media_block" id="media_block"></div>
 </main>
-<footer>
-    <marquee scrollamount="40"; scrolldelay="0">
+<footer> <!-- Раздел сайта (нижний колонтитул) -->
+    <marquee scrollamount="40"; scrolldelay="0"> <!-- Использование бегущей строки -->
         Внимание! В связи с пандемией COVID-19, убедительная просьба соблюдать профилактические меры - масочный режим и дистанцию не менее 1 метра!!!
     </marquee>
 </footer>
