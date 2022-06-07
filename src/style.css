@@ -29,6 +29,7 @@ header {
 main {
     height: 76vh;
     display: flex;
+    justify-content: center;
 }
 
 footer {
@@ -44,7 +45,7 @@ footer {
 }
 
 .media {
-    width: 85vw;
+    width: 52vw;
     height: 69vh;
     border-radius: 2vh;
     object-fit: contain;
@@ -54,7 +55,7 @@ footer {
 
 /* BRAND START */
 .brand {
-    display: grid;
+    display: flex;
     grid-template-columns: min-content 1fr;
     color: inherit;
     line-height: 1;
@@ -86,7 +87,7 @@ footer {
 
 /* CLOCK START */
 .clock {
-    display: grid;
+    display: flex;
     grid-template-columns: min-content 1fr;
     column-gap: 1vh;
     width: 24vw;
@@ -98,10 +99,9 @@ footer {
 }
 
 #clock__time {
-    font-size: 12vh;
+    font-size: 14vh;
     grid-row: span 2;
     font-weight: bold;
-    color: red;
 }
 
 /* CLOCK END */
