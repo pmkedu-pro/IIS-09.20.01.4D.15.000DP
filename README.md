@@ -4,4 +4,4 @@
 
 Лядов Никита Владиславович, гр. КС-18-1, Июнь 2022.
 
-[Онлайн демо](https://infoboard.hanriel.ru/)
+[Онлайн демо](https://infoboard.hanriel.ru/client/)
